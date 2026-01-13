@@ -3,6 +3,7 @@
 [Sentinel（哨兵模式）](#Sentinel（哨兵模式）)
 [Redis Cluster](#Redis%20Cluster)
 
+
 ### 为什么需要Redis集群
 
 单机Redis存在瓶颈
@@ -22,6 +23,8 @@
 在主从基础上增加了自动HA组件，监控Redis，故障时自动主从切换。
 
 ####  Redis Cluster
+
+[Redis Cluster](Redis%20Cluster.md)是Redis的分布式解决方案，通过**数据分片（Sharding）** 和 **复制（Replication）** 实现在多个节点之间自动分配数据并提供一定程度上的高可用性。
 
 1. 数据分片（水平扩展）
 2. 高可用（故障自动转移）
