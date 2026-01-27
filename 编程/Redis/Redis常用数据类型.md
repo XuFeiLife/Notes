@@ -4,7 +4,8 @@
 [Set](#Set)
 [Sorted Set](#Sorted%20Set)
 
-###  String
+###  String 
+[String底层原理](String底层原理.md)
 
 存储文本，JSON以及数字（支持自增自减）
 
