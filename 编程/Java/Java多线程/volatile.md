@@ -1,11 +1,12 @@
-[核心特性](#核心特性)
-[为什么需要volatile](#为什么需要volatile)
-[volatile vs synchronized](#volatile%20vs%20synchronized)
-[常见应用场景](#常见应用场景)
+[1. 核心特性](#1.%20核心特性)
+[2. 为什么需要volatile](#2.%20为什么需要volatile)
+[3. volatile vs synchronized](#3.%20volatile%20vs%20synchronized)
+[4. 常见应用场景](#4.%20常见应用场景)
+[5. volatile是如何通过 CPU 级别的“缓存一致性协议"](#5.%20volatile是如何通过%20CPU%20级别的“缓存一致性协议")
 
 `volatile` 是一个非常重要但常被误解的关键字。它主要用于多线程环境下，解决变量在多个线程之间的**可见性**和**有序性**问题。
 
-# 核心特性
+# 1. 核心特性
 
 ## 可见性
 
@@ -20,7 +21,7 @@
 
 编译器和处理器为了提高性能，往往会对指令进行**重排序**。`volatile` 通过加入“内存屏障”（Memory Barrier）来禁止指令重排序，确保代码执行顺序符合逻辑预期。
 
-# 为什么需要volatile
+# 2. 为什么需要volatile
 
 代码场景
 ``` java
@@ -36,7 +37,7 @@ stop = true;
 ```
 **问题：** 即使线程 B 将 `stop` 改为 `true`，线程 A 仍可能因为缓存了 `stop = false` 而陷入死循环。 **解决：** 给 `stop` 加上 `volatile` 关键字，线程 A 就能立刻感知到 `stop` 的变化。
 
-# volatile vs synchronized
+# 3. volatile vs synchronized
 
 [synchronized](synchronized.md)
 
@@ -48,7 +49,7 @@ stop = true;
 | **使用场景** | 状态标记、双重检查锁定            | 复杂的临界区操作         |
 **注意：** `volatile` 不能保证原子性。如果你执行 `count++`，这实际上包含“读-改-写”三个步骤，`volatile` 无法阻止多个线程在中间阶段互相覆盖，这种情况下必须使用 `synchronized` 或 `AtomicInteger`。
 
-# 常见应用场景
+# 4. 常见应用场景
 - **状态标志位**：如上面提到的 `stop` 标志，用于优雅地关闭线程。
 - **单例模式（Double-Check Locking）**：防止对象初始化时的指令重排导致拿到一个未初始化的对象。
 ```java
@@ -67,3 +68,6 @@ public class Singleton {
     }
 }
 ```
+
+# 5. volatile是如何通过 CPU 级别的“缓存一致性协议"
+[缓存一致性协议（Cache Coherence Protocol）](缓存一致性协议（Cache%20Coherence%20Protocol）.md)
