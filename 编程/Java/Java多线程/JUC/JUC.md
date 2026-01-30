@@ -1,3 +1,9 @@
+[1. 概述](#1.%20概述)
+[2. 核心基石：AQS (AbstractQueuedSynchronizer)](#2.%20核心基石：AQS%20(AbstractQueuedSynchronizer))
+[3. 主要模块](#3.%20主要模块)
+[4. JUC的优势](#4.%20JUC的优势)
+[5. 对比](#5.%20对比)
+
 # 1. 概述
 
 **java.util.concurrent (简称 JUC)** 是从 Java 5 (JDK 1.5) 开始引入的一组专门用于处理多线程编程的工具包。它由并发编程专家 **Doug Lea** 设计，旨在替代传统的 `synchronized` 和 `wait/notify` 机制，提供更高效、更灵活、更易用的并发编程模型。
