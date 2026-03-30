@@ -222,3 +222,5 @@ public class BookController {
 ```
 
 # Github地址
+
+[opensearch demo code](https://github.com/XuFeiLife/springboot-demo/tree/master/src/main/java/com/hans/springboot/demo/opensearch)
